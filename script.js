@@ -19,6 +19,10 @@ var board = {
         }
     },
 
+    resetVariables : function() {
+        this.flags = 0;
+    },
+
     askVariables: function() {
         this.lines = Number(prompt('Number of lines', 9));
         this.columns = Number(prompt('Number of columns', 9));
@@ -111,6 +115,7 @@ var showMines = function() {
 
 var newBoard = function() {
     board.askVariables();
+    board.resetVariables();
     board.cleanBoard();
     board.initSquares();
     addIDsToSquares();
@@ -147,13 +152,14 @@ var rightClickOnSquare = function(target) {
         $(target).empty();
         board.flags -= 1;
     } else {
-        $(target).html("<p>F</p>");
-        board.flags ++;
+        if (board.flags < board.numberOfMines) {
+            $(target).html("<p>F</p>");
+            board.flags ++;
+        }
     }
 };
 
 var leftClickOnSquare  = function(indexSquareClicked) {
-    alert(indexSquareClicked);
     $(".square").eq(indexSquareClicked).removeClass('square-unclicked').addClass('square-clicked');
 
     var indexLineClicked = indexToLine(indexSquareClicked);
