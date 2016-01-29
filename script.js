@@ -200,6 +200,7 @@ var clickedOnMine = function() {
 // actions to be done when user clicked on mine
     showMines();
     $('.square').off();
+    $(document).off();
     alert('You Lost!');
 };
 
@@ -224,6 +225,10 @@ var leftClickOnSquare  = function(indexSquareClicked) {
     var indexColumnClicked = indexToColumn(indexSquareClicked);
     var valueSquareClicked = board.squares[indexLineClicked][indexColumnClicked];
 
+    if ($(".square").eq(indexSquareClicked).text()  === 'F') {
+        board.flagsLeft += 1;
+        updateFlagsLeftScreen();
+    }
 
     if (valueSquareClicked == 'mine') {
         clickedOnMine();
@@ -233,6 +238,7 @@ var leftClickOnSquare  = function(indexSquareClicked) {
         board.squares[indexLineClicked][indexColumnClicked] = 'clicked';
 
     } else if (valueSquareClicked === '') {
+        $(".square").eq(indexSquareClicked).empty();
         board.squares[indexLineClicked][indexColumnClicked] = 'clicked';
         recursiveClick(indexLineClicked, indexColumnClicked);
     }
@@ -295,6 +301,7 @@ var recursiveClick = function(line, column) {
 var newGame = function() {
 // well, starts a new game
     $('.square').off();
+    $(document).off();
     newBoard();
     updateFlagsLeftScreen();
 
