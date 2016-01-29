@@ -320,6 +320,8 @@ var newGame = function() {
     $('.square').off();
     $(document).off();
     newBoard();
+    time.resetTimeVariables();
+    updateTimeScreen();
     updateFlagsLeftScreen();
 
     $('.square-unclicked').on('click', function(event) {
@@ -340,9 +342,41 @@ var updateFlagsLeftScreen = function() {
     $('#flags-left').text(board.flagsLeft);
 };
 
+var time = {
+    seconds: 0,
+    minutes: 0,
+    updateTime: function() {
+        if (this.seconds === 59) {
+            this.seconds = 0;
+            this.minutes ++;
+        } else {
+            this.seconds ++;
+        }
+    },
+    getTime: function() {
+    // returns string with time in HH:MM format
+        minutes = (this.minutes < 10) ? '0' + this.minutes : this.minutes;
+        seconds = (this.seconds < 10) ? '0' + this.seconds : this.seconds;
+        return minutes + ':' + seconds;
+    },
+    resetTimeVariables: function() {
+        time.seconds = 0;
+        time.minutes = 0;
+    }
+};
+
+var updateTimeScreen = function() {
+    $('#time').text(time.getTime());
+};
+
+var passOneSecond = function() {
+    time.updateTime();
+    updateTimeScreen();
+};
 
 $(function() {
     newGame();
 
     $('#new-game-button').on('click', newGame);
+    timer = setInterval(function(){passOneSecond();}, 1000);
 });
