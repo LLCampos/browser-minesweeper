@@ -206,7 +206,7 @@ var clickedOnMine = function() {
 var rightClickOnSquare = function(target) {
 // adds flag to square if there's none and takes flag off if there's none already on the square clicked
     if ($(target).html() == "F") {
-        $(target).empty();
+        $(target).parent().empty();
         board.flags -= 1;
     } else {
         if (board.flags < board.numberOfMines) {
