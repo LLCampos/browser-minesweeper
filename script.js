@@ -86,6 +86,31 @@ var board = {
     }
 };
 
+var checkEndOfGame = function() {
+    var end = true;
+    for (var line = 0; line < board.lines; line++) {
+        for (var column = 0; column < board.columns; column++) {
+            if (board.squares[line][column] !== 'clicked' && board.squares[line][column] !== 'mine') {
+                console.log(board.squares[line][column]);
+                end = false;
+                break;
+            }
+        }
+        if (end === false) {
+            break;
+        }
+    }
+    return end;
+};
+
+var endOfGame = function() {
+    end = checkEndOfGame();
+    if (end) {
+        $('.square').off();
+        alert("You won!");
+    }
+};
+
 var indexToLine = function(index) {
     return Math.floor(index / board.lines);
 };
@@ -132,6 +157,7 @@ var newGame = function() {
     $('.square-unclicked').on('click', function(event) {
         if (event.which === 1) {
             leftClickOnSquare(Number(this.id));
+            endOfGame();
         }
     });
 
@@ -170,6 +196,7 @@ var leftClickOnSquare  = function(indexSquareClicked) {
         clickedOnMine();
     } else if (typeof valueSquareClicked == 'number') {
         $(".square").eq(indexSquareClicked).html("<p>" + valueSquareClicked + "</p>");
+        board.squares[indexLineClicked][indexColumnClicked] = 'clicked';
     } else if (valueSquareClicked === '') {
         board.squares[indexLineClicked][indexColumnClicked] = 'clicked';
         recursiveClick(indexLineClicked, indexColumnClicked);
