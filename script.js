@@ -207,8 +207,8 @@ var clickedOnMine = function() {
 
 var rightClickOnSquare = function(target) {
 // adds flag to square if there's none and takes flag off if there's none already on the square clicked
-    if ($(target).html() == "F") {
-        $(target).parent().empty();
+    if ($(target).html() == "<p>F</p>") {
+        $(target).empty();
         board.flagsLeft += 1;
     } else {
         if (board.flagsLeft > 0) {
@@ -314,7 +314,7 @@ var newGame = function() {
     });
 
     $(document).on("contextmenu", '.square-unclicked', function(event){
-        rightClickOnSquare(event.target);
+        rightClickOnSquare(this);
         updateFlagsLeftScreen();
         return false;
     });
