@@ -251,49 +251,65 @@ var recursiveClick = function(line, column) {
     if (column !== 0) {
         if (board.squares[line][column - 1] != "mine") {
             var indexNeighbor1 = board.lines * line + (column - 1);
-            leftClickOnSquare(indexNeighbor1);
+            if ($('.square').eq(indexNeighbor1).text() != 'F') {
+                leftClickOnSquare(indexNeighbor1);
+            }
         }
     }
     if (column !== board.columns - 1) {
         if (board.squares[line][column + 1] != "mine") {
             var indexNeighbor2 = board.lines * line + (column + 1);
-            leftClickOnSquare(indexNeighbor2);
+            if ($('.square').eq(indexNeighbor2).text() != 'F') {
+                leftClickOnSquare(indexNeighbor2);
+            }
         }
     }
     if (line !== 0) {
         if (board.squares[line - 1][column] != "mine") {
             var indexNeighbor3 = board.lines * (line - 1) + (column);
-            leftClickOnSquare(indexNeighbor3);
+            if ($('.square').eq(indexNeighbor3).text() != 'F') {
+                leftClickOnSquare(indexNeighbor3);
+            }
         }
     }
     if (line !== board.lines - 1) {
         if (board.squares[line + 1][column] != "mine") {
             var indexNeighbor4 = board.lines * (line + 1) + (column);
-            leftClickOnSquare(indexNeighbor4);
+            if ($('.square').eq(indexNeighbor4).text() != 'F') {
+                leftClickOnSquare(indexNeighbor4);
+            }
         }
     }
     if (column !== 0 && line !== 0) {
         if (board.squares[line - 1][column - 1] != "mine") {
             var indexNeighbor5 = board.lines * (line - 1) + (column - 1);
-            leftClickOnSquare(indexNeighbor5);
+            if ($('.square').eq(indexNeighbor5).text() != 'F') {
+                leftClickOnSquare(indexNeighbor5);
+            }
         }
     }
     if (column !== board.columns - 1 && line !== 0) {
         if (board.squares[line - 1][column + 1] != "mine") {
             var indexNeighbor6 = board.lines * (line - 1) + (column + 1);
-            leftClickOnSquare(indexNeighbor6);
+            if ($('.square').eq(indexNeighbor6).text() != 'F') {
+                leftClickOnSquare(indexNeighbor6);
+            }
         }
     }
     if (column !== 0 && line !== board.lines - 1) {
         if (board.squares[line + 1][column - 1] != "mine") {
             var indexNeighbor7 = board.lines * (line + 1) + (column - 1);
-            leftClickOnSquare(indexNeighbor7);
+            if ($('.square').eq(indexNeighbor7).text() != 'F') {
+                leftClickOnSquare(indexNeighbor7);
+            }
         }
     }
     if (column !== board.columns - 1 && line !== board.lines - 1) {
         if (board.squares[line + 1][column + 1] != "mine") {
             var indexNeighbor8 = board.lines * (line + 1) + (column + 1);
-            leftClickOnSquare(indexNeighbor8);
+            if ($('.square').eq(indexNeighbor8).text() != 'F') {
+                leftClickOnSquare(indexNeighbor8);
+            }
         }
     }
 };
