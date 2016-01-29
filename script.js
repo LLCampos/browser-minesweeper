@@ -91,7 +91,6 @@ var checkEndOfGame = function() {
     for (var line = 0; line < board.lines; line++) {
         for (var column = 0; column < board.columns; column++) {
             if (board.squares[line][column] !== 'clicked' && board.squares[line][column] !== 'mine') {
-                console.log(board.squares[line][column]);
                 end = false;
                 break;
             }
@@ -161,7 +160,7 @@ var newGame = function() {
         }
     });
 
-    $('.square-unclicked').on("contextmenu", function(event){
+    $(document).on("contextmenu", '.square-unclicked', function(event){
         rightClickOnSquare(event.target);
         return false;
     });
