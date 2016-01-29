@@ -17,6 +17,7 @@ header h1 {
 .screen {
     display: inline-block;
     margin-bottom: 6px;
+    margin-right: 10px;
 }
 
 #time-screen {
@@ -24,7 +25,7 @@ header h1 {
 }
 
 #new-game-button {
-    margin: 50px auto;
+    margin: 5px auto;
     width: 100px;
     font-weight: 900;
     display: block;
@@ -34,8 +35,6 @@ header h1 {
     border-radius: 20px;
     padding: 10px;
     cursor: pointer;
-    position: relative;
-    top: 20px;
 }
 
 #game-zone {
@@ -78,4 +77,11 @@ header h1 {
 .square-clicked {
     background-color: #008000;
     border: 2px solid #008000;
+}
+
+#board {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0px);
 }
