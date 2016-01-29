@@ -1,3 +1,7 @@
+body {
+    background-color: #cdc;
+}
+
 header {
     position: relative;
     width: 100%;
@@ -10,9 +14,19 @@ header h1 {
     margin: 0 auto;
 }
 
+.screen {
+    display: inline-block;
+    margin-bottom: 6px;
+}
+
+#time-screen {
+    float: right;
+}
+
 #new-game-button {
     margin: 50px auto;
     width: 100px;
+    font-weight: 900;
     display: block;
     color: white;
     background-color: #000;

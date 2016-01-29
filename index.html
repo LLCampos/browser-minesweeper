@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Catsweeper</title>
+    <title>Minesweeper</title>
     <link rel="stylesheet" type="text/css" href="main.css">
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:700' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -9,10 +9,10 @@
     <meta charset="UTF-8">
 </head>
 <body>
-    <header><h1>Catsweeper</h1></header>
+    <header><h1>Minesweeper</h1></header>
     <div id="game-zone">
-        <div id="flags-left-screen">Flags left: <span id="flags-left"></span></div>
-        <div id="time-screen">Time: <span id="time"></span></div>
+        <div id="flags-left-screen" class="screen"><strong>Flags left:</strong> <span id="flags-left"></span></div>
+        <div id="time-screen" class="screen"><strong>Time:</strong> <span id="time"></span></div>
         <div id="board">
         </div>
         <button id="new-game-button">New Game</button>
