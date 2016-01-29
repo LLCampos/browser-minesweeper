@@ -10,6 +10,20 @@ header h1 {
     margin: 0 auto;
 }
 
+#new-game-button {
+    margin: 50px auto;
+    width: 100px;
+    display: block;
+    color: white;
+    background-color: #000;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    top: 20px;
+}
+
 #game-zone {
     position: absolute;
     left: 50%;
