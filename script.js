@@ -372,6 +372,7 @@ var passOneSecond = function() {
 };
 
 var pauseGame = function() {
+// stops timer and makes stops action on board
     $('.square').off();
     $(document).off();
     clearInterval(timer);
