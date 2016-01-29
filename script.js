@@ -4,6 +4,7 @@ var board = {
     columns: 0,
     numberofMines: 0,
     mineLocations: [],
+    flags : 0,
     numberOfSquares: function() {return this.lines  * this.columns;},
     squares: [],
 
@@ -124,7 +125,14 @@ var newGame = function() {
     newBoard();
 
     $('.square-unclicked').on('click', function(event) {
-        leftClickOnSquare(Number(event.target.id));
+        if (event.which === 1) {
+            leftClickOnSquare(Number(this.id));
+        }
+    });
+
+    $('.square-unclicked').on("contextmenu", function(event){
+        rightClickOnSquare(event.target);
+        return false;
     });
 };
 
@@ -134,7 +142,18 @@ var clickedOnMine = function() {
     alert('You Lost!');
 };
 
+var rightClickOnSquare = function(target) {
+    if ($(target).html() === "F") {
+        $(target).empty();
+        board.flags -= 1;
+    } else {
+        $(target).html("<p>F</p>");
+        board.flags ++;
+    }
+};
+
 var leftClickOnSquare  = function(indexSquareClicked) {
+    alert(indexSquareClicked);
     $(".square").eq(indexSquareClicked).removeClass('square-unclicked').addClass('square-clicked');
 
     var indexLineClicked = indexToLine(indexSquareClicked);
