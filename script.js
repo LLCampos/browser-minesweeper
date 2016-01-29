@@ -19,7 +19,7 @@ var board = {
 // ask user new values for variables
         this.lines = Number(prompt('Number of lines and columns', 9));
         this.columns = this.lines;
-        this.numberOfMines = Number(prompt('Number of mines', 10));
+        this.numberOfMines = Number(prompt('Number of mines (must be smaller than number of squares)', 10));
     },
 
     initSquares: function() {
