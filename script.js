@@ -126,9 +126,8 @@ var checkEndOfGame = function() {
 // checks if the player won
     end = checkEndOfGameHelper();
     if (end) {
-        $('.square').off();
-        $(document).off();
-        alert("You won! You took" + time.getTime());
+        pauseGame();
+        alert("You won! You took " + time.getTime());
     }
 };
 
@@ -200,8 +199,7 @@ var showMines = function() {
 var clickedOnMine = function() {
 // actions to be done when user clicked on mine
     showMines();
-    $('.square').off();
-    $(document).off();
+    pauseGame();
     alert('You Lost!');
 };
 
@@ -317,12 +315,11 @@ var recursiveClick = function(line, column) {
 
 var newGame = function() {
 // well, starts a new game
-    $('.square').off();
-    $(document).off();
     newBoard();
     time.resetTimeVariables();
     updateTimeScreen();
     updateFlagsLeftScreen();
+    timer = setInterval(function(){passOneSecond();}, 1000);
 
     $('.square-unclicked').on('click', function(event) {
         if (event.which === 1) {
@@ -374,9 +371,14 @@ var passOneSecond = function() {
     updateTimeScreen();
 };
 
+var pauseGame = function() {
+    $('.square').off();
+    $(document).off();
+    clearInterval(timer);
+};
+
 $(function() {
     newGame();
 
     $('#new-game-button').on('click', newGame);
-    timer = setInterval(function(){passOneSecond();}, 1000);
 });
