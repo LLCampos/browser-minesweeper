@@ -128,7 +128,7 @@ var checkEndOfGame = function() {
     if (end) {
         $('.square').off();
         $(document).off();
-        alert("You won!");
+        alert("You won! You took" + time.getTime());
     }
 };
 
