@@ -17,8 +17,8 @@ var board = {
 
     askVariables: function() {
 // ask user new values for variables
-        this.lines = Number(prompt('Number of lines', 9));
-        this.columns = Number(prompt('Number of columns', 9));
+        this.lines = Number(prompt('Number of lines and columns', 9));
+        this.columns = this.lines;
         this.numberOfMines = Number(prompt('Number of mines', 10));
     },
 
