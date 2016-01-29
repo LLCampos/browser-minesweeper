@@ -381,5 +381,8 @@ var pauseGame = function() {
 $(function() {
     newGame();
 
-    $('#new-game-button').on('click', newGame);
+    $('#new-game-button').on('click', function() {
+        pauseGame();
+        newGame();
+    });
 });
