@@ -173,7 +173,7 @@ var clickedOnMine = function() {
 };
 
 var rightClickOnSquare = function(target) {
-    if ($(target).html() === "F") {
+    if ($(target).html() == "F") {
         $(target).empty();
         board.flags -= 1;
     } else {
