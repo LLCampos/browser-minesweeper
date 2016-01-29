@@ -4,14 +4,14 @@ var board = {
     columns: 0,
     numberofMines: 0,
     mineLocations: [],
-    flags : 0,
+    flagsLeft : 0,
     numberOfSquares: function() {return this.lines  * this.columns;},
     squares: [],
 
     resetBoardVariables : function() {
 // reset variables from object board
         this.squares = [];
-        this.flags = 0;
+        this.flagsLeft = this.numberOfMines;
         this.mineLocations = [];
     },
 
@@ -207,11 +207,11 @@ var rightClickOnSquare = function(target) {
 // adds flag to square if there's none and takes flag off if there's none already on the square clicked
     if ($(target).html() == "F") {
         $(target).parent().empty();
-        board.flags -= 1;
+        board.flagsLeft += 1;
     } else {
-        if (board.flags < board.numberOfMines) {
+        if (board.flagsLeft > 0) {
             $(target).html("<p>F</p>");
-            board.flags ++;
+            board.flagsLeft -= 1;
         }
     }
 };
@@ -223,6 +223,7 @@ var leftClickOnSquare  = function(indexSquareClicked) {
     var indexLineClicked = indexToLine(indexSquareClicked);
     var indexColumnClicked = indexToColumn(indexSquareClicked);
     var valueSquareClicked = board.squares[indexLineClicked][indexColumnClicked];
+
 
     if (valueSquareClicked == 'mine') {
         clickedOnMine();
@@ -295,6 +296,7 @@ var newGame = function() {
 // well, starts a new game
     $('.square').off();
     newBoard();
+    updateFlagsLeftScreen();
 
     $('.square-unclicked').on('click', function(event) {
         if (event.which === 1) {
@@ -305,8 +307,13 @@ var newGame = function() {
 
     $(document).on("contextmenu", '.square-unclicked', function(event){
         rightClickOnSquare(event.target);
+        updateFlagsLeftScreen();
         return false;
     });
+};
+
+var updateFlagsLeftScreen = function() {
+    $('#flags-left').text(board.flagsLeft);
 };
 
 
