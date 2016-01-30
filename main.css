@@ -14,6 +14,8 @@ header h1 {
     margin: 0 auto;
 }
 
+/* Displayers */
+
 .screen {
     display: inline-block;
     margin-bottom: 6px;
@@ -23,6 +25,8 @@ header h1 {
 #time-screen {
     float: right;
 }
+
+/* Button`*/
 
 #new-game-button {
     margin: 5px auto;
@@ -36,6 +40,8 @@ header h1 {
     padding: 10px;
     cursor: pointer;
 }
+
+/* Game-zone */
 
 #game-zone {
     position: absolute;
